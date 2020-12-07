@@ -22,22 +22,34 @@ namespace CalcStatsTest
         {
             calc.Results(stats);
 
-            Assert.AreEqual(calc.MinimumValue(), expected);
+            Assert.AreEqual(calc.MinimumValue, expected);
         }
 
         [Test]
-        public void Test_maximumValue()
+        [TestCase(new[] {44, 32, 1, 2, 100 }, 100)]
+        public void Test_maximumValue(int[] stats, int expected)
         {
+            calc.Results(stats);
+
+            Assert.AreEqual(calc.MaximumValue, expected);
         }
 
         [Test]
-        public void Test_numberOfElementsInTheSequence()
+        [TestCase(new[] {1, 2, 3, 4, 5, 6, 7, 8, 9, 10 }, 10)]
+        public void Test_numberOfElementsInTheSequence(int[] stats, int expected)
         {
+            calc.Results(stats);
+
+            Assert.AreEqual(calc.NumberOfElementsInTheSequence, expected);
         }
 
         [Test]
-        public void Test_averageValue()
+        [TestCase(new[] {5, 6, 3, 7, 7, 5}, 5.5)]
+        public void Test_averageValue(int[] stats, double expected)
         {
+            calc.Results(stats);
+
+            Assert.AreEqual(calc.AverageValue, expected);
         }
     }
 }
